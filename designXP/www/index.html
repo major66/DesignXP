@@ -6,25 +6,28 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.js" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/index.css" />
     </head>
     <body>
 
     <body>
-
+    <div class="container">
     <div class="headerApp">
+
         <p class="titleHeader">
             Accueil
         </p>
         <span class="glyphicon glyphicon-search searchIcon" aria-hidden="true"></span>
     </div>
-    <div style="background-color: white">
-        <div class="compare-product">
-            <img src="http://img1.lesnumeriques.com/produits/190/21897/plantronics-backbeat-pro_08d88980caba8084_300x300.jpg" data-id="21897" class="product-thumbnail">
-            <h4 style="height: 15px;">
-                Plantronics BackBeat Pro
+    <div class="row">
+        <div class="compare-product col-sm-6 ">
+            <img class="imgIem" src="http://img1.lesnumeriques.com/produits/190/21897/plantronics-backbeat-pro_08d88980caba8084_300x300.jpg" data-id="21897" style="height: 20%;width: 20%;" class="product-thumbnail">
+            <h4>
+
             </h4>
             <span class="glyphicon glyphicon-star bigStarBlue" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-star bigStarBlue" aria-hidden="true"></span>
@@ -44,10 +47,10 @@
                 </p>
             </div>
         </div>
-        <div class="compare-product">
-            <img src="http://img1.lesnumeriques.com/produits/463/10215/audio-technica-ath-anc9_300x300.jpg" data-id="21897" class="product-thumbnail">
+        <div class="compare-product col-sm-6">
+            <img src="" data-id="21897" class="product-thumbnail">
             <h4 style="height: 15px;">
-                Plantronics BackBeat Pro
+
             </h4>
             <span class="glyphicon glyphicon-star bigStarBlue" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-star bigStarBlue" aria-hidden="true"></span>
@@ -67,6 +70,7 @@
                 </p>
             </div>
         </div>
+    </div>
     </div>
     </body>
     <script type="text/javascript" src="cordova.js"></script>
