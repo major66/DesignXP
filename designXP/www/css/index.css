@@ -20,10 +20,29 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+#navbar-actions {
+    text-align: right;
+}
+
+#navbar-actions span {
+    line-height: 1.4em;
+    font-size: 2em;
+    padding-top: 5px;
+    padding-right: 5px;
+    color:white;
+    margin-right: 0.5em;
+}
+
+.container {
+    padding: 0;
+}
+
+.row {
+    margin: 2% 2%;
+}
+
 .headerApp{
-    position: fixed;!important;
     width: 100%;
-    position: relative;
     top: 0%;
     height:45px;
     background-color:#2196F3;
@@ -36,29 +55,30 @@
     font-size: 20px;
     font-weight: bold;
     color: white;
+    text-transform: none;
 }
 
-.searchIcon{
-    float:right;
-    font-size: 30px;
-    padding-top: 5px;
-    padding-right: 5px;
-    color:white;
+.product-title {
+    
 }
 
 .compare-product {
+    margin: 0% 4% 2% 4%;
     border: 1px solid #DEDEDE;
     float: left;
-    padding: 5px 3px;
     text-align: center;
     font-size: .9em;
     color: #2E2E2E;
     position: relative;
     overflow: hidden;
-    background-color: white;
+}
+
+.nb-review {
+    font-size: 0.6em;
 }
 
 .imgIem{
+    width: 80%;
 }
 
 
@@ -118,7 +138,7 @@ body {
     text-align:center;
     padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
     margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    /* offset horizontal: half of text area width */
 }
 
 /* Landscape layout (with min-width) */
@@ -127,7 +147,7 @@ body {
         background-position:left center;
         padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
         margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
+        /* offset horizontal: half of image width and text area width */
     }
 }
 
@@ -164,13 +184,13 @@ h1 {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
