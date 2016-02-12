@@ -18,32 +18,35 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
+        var products = document.querySelectorAll(".compare-product");
+        for (var i = 0; i < products.length; i++) {
+            products[i].addEventListener('click', app.selectProductToCompare, false);
+        }
+    },
+    selectProductToCompare: function (event) {
+        if (event.currentTarget.classList.contains("selectedItem")) {
+            event.currentTarget.className = "compare-product col-xs-5";
+        } else {
+            event.currentTarget.className = "compare-product col-xs-5 selectedItem";
+        }
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+    receivedEvent: function (id) {
     }
 };
