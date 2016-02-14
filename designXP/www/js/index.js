@@ -16,6 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+$.event.special.tap.tapholdThreshold = 400;
+
 var app = {
     // Application Constructor
     initialize: function () {
@@ -36,7 +39,7 @@ var app = {
         app.receivedEvent('deviceready');
         var products = document.querySelectorAll(".compare-product");
         for (var i = 0; i < products.length; i++) {
-            products[i].addEventListener('click', app.selectProductToCompare, false);
+            $(products[i]).on('taphold', app.selectProductToCompare);
         }
     },
     selectProductToCompare: function (event) {
