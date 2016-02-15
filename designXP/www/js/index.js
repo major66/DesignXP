@@ -17,39 +17,54 @@
  * under the License.
  */
 
-$.event.special.tap.tapholdThreshold = 400;
+$.event.special.tap.tapholdThreshold = 300;
+$.event.special.tap.emitTapOnTaphold = false;
+var selectedProductsNb = 0;
 
 var app = {
-    // Application Constructor
     initialize: function () {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        app.receivedEvent('deviceready');
         var products = document.querySelectorAll(".compare-product");
         for (var i = 0; i < products.length; i++) {
-            $(products[i]).on('taphold', app.selectProductToCompare);
+            $(products[i]).bind('taphold', app.startSelector);
+        }
+        for (var i = 0; i < products.length; i++) {
+            $(products[i]).bind('tap', app.onSelectorMode);
         }
     },
-    selectProductToCompare: function (event) {
-        if (event.currentTarget.classList.contains("selectedItem")) {
-            event.currentTarget.className = "compare-product col-xs-5";
-        } else {
-            event.currentTarget.className = "compare-product col-xs-5 selectedItem";
-        }
+    startSelector: function (event) {
+        addBorder(event);
     },
-    // Update DOM on a Received Event
-    receivedEvent: function (id) {
+    onSelectorMode: function (event) {
+        if (selectedProductsNb > 0) {
+            addBorder(event);
+        }
     }
 };
+
+function addBorder(event) {
+    if (event.currentTarget.classList.contains("selectedItem")) {
+        selectedProductsNb--;
+        showComparatorButton();
+        event.currentTarget.className = "compare-product col-xs-5";
+    } else {
+        selectedProductsNb++;
+        showComparatorButton();
+        event.currentTarget.className = "compare-product col-xs-5 selectedItem";
+    }
+}
+
+function showComparatorButton() {
+    if (selectedProductsNb >= 2) {
+        $("#compare-button").show();
+    } else {
+        $("#compare-button").hide();
+    }
+}

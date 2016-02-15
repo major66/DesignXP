@@ -33,6 +33,19 @@
     margin-right: 0.5em;
 }
 
+#compare-button {
+    bottom: 2%;
+    position: fixed;
+    width: 50%;
+    text-transform: uppercase;
+    color: white;
+    background-color: #2196F3;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+}
+
 .container {
     padding: 0;
 }
