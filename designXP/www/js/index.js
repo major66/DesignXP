@@ -61,6 +61,8 @@ var app = {
     onSelectorMode: function (event) {
         if (selectedProductsNb > 0) {
             addBorder(event);
+        } else {
+            window.location = "plug_headphones.html";
         }
     },
     saveProducts: function (event) {
