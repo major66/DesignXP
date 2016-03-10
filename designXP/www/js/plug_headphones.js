@@ -62,7 +62,7 @@ function loadProduct(items) {
                         + "<div style='margin-top: 5px;' title='type'><span>Type de casque : </span><span>" + val.type + "</span></div>"
                         + "<div style='margin-top: 5px;' title='speaker'><span>Haut parleur : </span><span>" + val.hp + "</span></div>"
                         + "<div style='margin-top: 5px;' title='noise_reducer'><span>Reducteur de bruit : </span><span>" + val.noise_reducer + "</span></div>"
-                        + "<div style='margin-top: 5px;' title='wireless'><span>Wifi : </span><span>" + val.wireless + "</span></div>"
+                        + "<div style='margin-top: 5px;' title='wireless'><span>Sans fils : </span><span>" + val.wireless + "</span></div>"
                         + "<div style='margin-top: 5px;' title='price'>" + val.price + "</div>"
                         + '<div title="button_purchase">'
                         + '<a href="#" onclick="window.open("' + val.link + '", "_system");"><img src="img/achat.jpg" height="44"></a>'
