@@ -29,9 +29,6 @@ Storage.prototype.getObject = function (key) {
     return value && JSON.parse(value);
 }
 
-
-localStorage.getObject('myObject')
-
 $.event.special.tap.tapholdThreshold = 300;
 $.event.special.tap.emitTapOnTaphold = false;
 var selectedProductsNb = 0;
