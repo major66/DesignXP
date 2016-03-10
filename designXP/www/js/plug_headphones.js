@@ -65,7 +65,7 @@ function loadProduct(items) {
                         + "<div style='margin-top: 5px;' title='wireless'><span>Wifi : </span><span>" + val.wireless + "</span></div>"
                         + "<div style='margin-top: 5px;' title='price'>" + val.price + "</div>"
                         + '<div title="button_purchase">'
-                        + '<a href="#" onclick="window.open("' + val.link + '", "_system");"><img src="img/achat.jpg" height="44"></a>'
+                        + '<a href="#" onclick="window.open(\'' + val.link + '\', \'_system\')"><img src="img/achat.jpg" height="44"></a>'
                         + "</div></div>";
                 $("#first-column").append(htmlProducts);
             }
