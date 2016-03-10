@@ -33,6 +33,7 @@ $.event.special.tap.emitTapOnTaphold = false;
 var selectedProductsNb = 0;
 var itemsToCompare = [];
 var isSearchBarOpen = false;
+
 var app = {
     initialize: function () {
         this.bindEvents();
@@ -62,6 +63,10 @@ var app = {
         if (selectedProductsNb > 0) {
             addBorder(event);
         } else {
+            var productToView = $(event.target).hasClass("compare-product")
+                    ? $(event.target).attr("id").split('-')[1]
+                    : $(event.target).parents('.compare-product').attr("id").split('-')[1];
+            localStorage.setObject('product', productToView);
             window.location = "plug_headphones.html";
         }
     },
