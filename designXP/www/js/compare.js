@@ -39,7 +39,19 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function () {
-        var comparedItems = localStorage.getObject('comparator');
-        console.log(comparedItems);
+        var comparedItems = JSON.parse(localStorage.getObject('comparator'));
+        loadProducts(comparedItems);
     }
 };
+
+function loadProducts(items) {
+    $.getJSON("document.json", function (data) {
+        $.each(data, function (key, val) {
+            if ($.inArray(val.id, items) !== -1) {
+                htmlProducts = val.id;
+//                $("#first-column").append(htmlProducts);
+//                $("#second-column").append(htmlProducts);
+            }
+        });
+    });
+}

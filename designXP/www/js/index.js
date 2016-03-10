@@ -134,11 +134,11 @@ function generateHtmlRank(rank, role) {
     var html = "";
     var starType = role === "user" ? "bigStarBlue" : 'smallStarYellow';
     while (i < rank) {
-        html += '<span class="glyphicon glyphicon-star ' + starType + '" aria-hidden="true"></span>\n';
+        html += '<span class="glyphicon glyphicon-star ' + starType + '" aria-hidden="true"></span>';
         i++;
     }
     while (i < 5) {
-        html += '<span class="glyphicon glyphicon-star-empty ' + starType + '" aria-hidden="true"></span>\n';
+        html += '<span class="glyphicon glyphicon-star-empty ' + starType + '" aria-hidden="true"></span>';
         i++;
     }
     return html;
