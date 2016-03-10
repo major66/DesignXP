@@ -17,6 +17,10 @@
  * under the License.
  */
 
+$.ajaxSetup({
+    async: false
+});
+
 $.event.special.tap.tapholdThreshold = 300;
 $.event.special.tap.emitTapOnTaphold = false;
 var selectedProductsNb = 0;
@@ -31,6 +35,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function () {
+        loadProducts();
         var products = document.querySelectorAll(".compare-product");
         for (var i = 0; i < products.length; i++) {
             $(products[i]).bind('taphold', app.startSelector);
@@ -67,4 +72,40 @@ function showComparatorButton() {
     } else {
         $("#compare-button").hide();
     }
+}
+
+function loadProducts() {
+    $.getJSON("document.json", function (data) {
+        $.each(data, function (key, val) {
+            var userRank = generateHtmlRank(parseInt(val.user_rank), 'user');
+            var proRank = generateHtmlRank(parseInt(val.pro_rank), 'pro');
+            var htmlProducts = '<div class="compare-product col-xs-5">'
+                    + '<img class="imgIem product-thumbnail" src="' + val.img + '">'
+                    + '<h4 class="product-title">' + val.name + '</h4>'
+                    + '<div>'
+                    + userRank + '</div><div>' + proRank
+                    + '<span class="nb-review">(' + val.nb_user_rank + ' avis)</span>'
+                    + '</div>'
+                    + '<div style="height: 36px;"><p class="priceItem">'
+                    + val.price
+                    + '</p></div>'
+                    + '</div>';
+            $("#product-list").append(htmlProducts);
+        });
+    });
+}
+
+function generateHtmlRank(rank, role) {
+    var i = 0;
+    var html = "";
+    var starType = role === "user" ? "bigStarBlue" : 'smallStarYellow';
+    while (i < rank) {
+        html += '<span class="glyphicon glyphicon-star ' + starType + '" aria-hidden="true"></span>\n';
+        i++;
+    }
+    while (i < 5) {
+        html += '<span class="glyphicon glyphicon-star-empty ' + starType + '" aria-hidden="true"></span>\n';
+        i++;
+    }
+    return html;
 }
