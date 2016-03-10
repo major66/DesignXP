@@ -20,7 +20,6 @@
 $.ajaxSetup({
     async: false
 });
-
 Storage.prototype.setObject = function (key, value) {
     this.setItem(key, JSON.stringify(value));
 }
@@ -33,7 +32,7 @@ $.event.special.tap.tapholdThreshold = 300;
 $.event.special.tap.emitTapOnTaphold = false;
 var selectedProductsNb = 0;
 var itemsToCompare = [];
-
+var isSearchBarOpen = false;
 var app = {
     initialize: function () {
         this.bindEvents();
@@ -43,6 +42,8 @@ var app = {
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         $("#compare-button").click(this.saveProducts);
+        $("#search-button").click(this.changeButton);
+        $("#search-bar").keypress(this.searchProducts);
     },
     onDeviceReady: function () {
         loadProducts();
@@ -60,25 +61,42 @@ var app = {
     onSelectorMode: function (event) {
         if (selectedProductsNb > 0) {
             addBorder(event);
-            console.log(itemsToCompare);
         }
     },
     saveProducts: function (event) {
         localStorage.setObject('comparator', JSON.stringify(itemsToCompare));
+    },
+    changeButton: function (event) {
+        if (!isSearchBarOpen) {
+            $("#search-bar").show().focus();
+            $("#search-button").attr('class', "glyphicon glyphicon-remove");
+            isSearchBarOpen = true;
+        } else if (isSearchBarOpen) {
+            $("#search-bar").val('').hide();
+            $("#search-button").attr('class', "glyphicon glyphicon-search");
+            isSearchBarOpen = false;
+            searchProduct("null");
+        }
+    },
+    searchProducts: function (event) {
+        if (event.keyCode === 13 && isSearchBarOpen) {
+            event.preventDefault();
+            var searchBarValue = $("#search-bar").val();
+            searchProduct(searchBarValue);
+        }
     }
 };
-
 function addBorder(event) {
     if (event.currentTarget.classList.contains("selectedItem")) {
         selectedProductsNb--;
         showComparatorButton();
         event.currentTarget.className = "compare-product col-xs-5";
-        updateSelectedItemsToCompare(event, "delete")
+        updateSelectedItemsToCompare(event, "delete");
     } else {
         selectedProductsNb++;
         showComparatorButton();
         event.currentTarget.className = "compare-product col-xs-5 selectedItem";
-        updateSelectedItemsToCompare(event, "add")
+        updateSelectedItemsToCompare(event, "add");
     }
 
 }
@@ -127,6 +145,33 @@ function loadProducts() {
             $("#product-list").append(htmlProducts);
         });
     });
+}
+
+function searchProduct(input) {
+    if (input === "null") {
+        $(".compare-product").each(function (key, val) {
+            var productId = $(val).attr('id').split('-')[1];
+            $("#product-" + productId).show();
+        });
+    } else {
+        var foundItem = [];
+        $.getJSON("document.json", function (data) {
+            $.each(data, function (key, val) {
+                var lowerCaseString = val.name.toLowerCase();
+                if (lowerCaseString.search(input.toLowerCase()) > -1) {
+                    foundItem.push(val.id);
+                }
+            });
+        });
+        $(".compare-product").each(function (key, val) {
+            var productId = $(val).attr('id').split('-')[1];
+            if ($.inArray(productId, foundItem) > -1) {
+                $("#product-" + productId).show();
+            } else {
+                $("#product-" + productId).hide();
+            }
+        });
+    }
 }
 
 function generateHtmlRank(rank, role) {
