@@ -21,9 +21,21 @@ $.ajaxSetup({
     async: false
 });
 
+Storage.prototype.setObject = function (key, value) {
+    this.setItem(key, JSON.stringify(value));
+}
+Storage.prototype.getObject = function (key) {
+    var value = this.getItem(key);
+    return value && JSON.parse(value);
+}
+
+
+localStorage.getObject('myObject')
+
 $.event.special.tap.tapholdThreshold = 300;
 $.event.special.tap.emitTapOnTaphold = false;
 var selectedProductsNb = 0;
+var itemsToCompare = [];
 
 var app = {
     initialize: function () {
@@ -33,6 +45,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        $("#compare-button").click(this.saveProducts);
     },
     onDeviceReady: function () {
         loadProducts();
@@ -50,7 +63,11 @@ var app = {
     onSelectorMode: function (event) {
         if (selectedProductsNb > 0) {
             addBorder(event);
+            console.log(itemsToCompare);
         }
+    },
+    saveProducts: function (event) {
+        localStorage.setObject('comparator', JSON.stringify(itemsToCompare));
     }
 };
 
@@ -59,10 +76,30 @@ function addBorder(event) {
         selectedProductsNb--;
         showComparatorButton();
         event.currentTarget.className = "compare-product col-xs-5";
+        updateSelectedItemsToCompare(event, "delete")
     } else {
         selectedProductsNb++;
         showComparatorButton();
         event.currentTarget.className = "compare-product col-xs-5 selectedItem";
+        updateSelectedItemsToCompare(event, "add")
+    }
+
+}
+
+function updateSelectedItemsToCompare(event, action) {
+    var item;
+    if ($(event.target).hasClass("compare-product")) {
+        item = ($(event.target).attr('id').split('-')[1]);
+    } else {
+        item = ($(event.target).parents('.compare-product').attr('id').split('-')[1]);
+    }
+
+    if (action === "add") {
+        itemsToCompare.push(item);
+    } else {
+        itemsToCompare = $.grep(itemsToCompare, function (value) {
+            return value !== item;
+        });
     }
 }
 
@@ -79,7 +116,7 @@ function loadProducts() {
         $.each(data, function (key, val) {
             var userRank = generateHtmlRank(parseInt(val.user_rank), 'user');
             var proRank = generateHtmlRank(parseInt(val.pro_rank), 'pro');
-            var htmlProducts = '<div class="compare-product col-xs-5">'
+            var htmlProducts = '<div class="compare-product col-xs-5" id="product-' + val.id + '">'
                     + '<img class="imgIem product-thumbnail" src="' + val.img + '">'
                     + '<h4 class="product-title">' + val.name + '</h4>'
                     + '<div>'
