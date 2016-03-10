@@ -48,7 +48,6 @@ function loadProduct(items) {
     $.getJSON("document.json", function (data) {
         $.each(data, function (key, val) {
             if (val.id == items) {
-                console.log(val);
                 var htmlProducts = '<div class="compare-product" style="margin: 0%; border: none;  height: 92vh;">'
                         + "<img class='imgIIem' src='" + val.img + "'/>"
                         + '<div style="margin-top: 5px; font-weight: bold;" title="name">' + val.name + '</div>'
@@ -63,7 +62,7 @@ function loadProduct(items) {
                         + "<div style='margin-top: 5px;' title='speaker'><span>Haut parleur : </span><span>" + val.hp + "</span></div>"
                         + "<div style='margin-top: 5px;' title='noise_reducer'><span>Reducteur de bruit : </span><span>" + val.noise_reducer + "</span></div>"
                         + "<div style='margin-top: 5px;' title='wireless'><span>Sans fils : </span><span>" + val.wireless + "</span></div>"
-                        + "<div style='margin-top: 5px;' title='price'>" + val.price + "</div>"
+                        + "<div style='margin-top: 2em; font-size: 2em; font-weight: bold;' title='price'>" + val.price + "</div>"
                         + '<div title="button_purchase">'
                         + '<a href="#" onclick="window.open(\'' + val.link + '\', \'_system\')"><img src="img/achat.jpg" height="44"></a>'
                         + "</div></div>";
