@@ -144,22 +144,25 @@
     color: rgba(0, 0, 0, 0.84);
     margin: 0 auto 0 auto;
     padding: 0;
-    width: 100px;
+    width: 28px;
 }
 
 #middleInfo #bruitTitle {
     top: 316px;
+    width: 100px;
 }
 
 #middleInfo #wirelessTitle {
     top: 335px;
+    width: 48px;
 }
 
 #middleInfo #weightTitle {
     top: 354px;
+    width: 38px;
 }
 
-#middleInfo #expertAdvice, #middleInfo #audioTitle, #middleInfo #ergonomieTitle, #middleInfo #noteTitle {
+#middleInfo #expertAdviceTitle, #middleInfo #audioTitle, #middleInfo #ergonomieTitle, #middleInfo #noteTitle {
     top: 385px;
     text-align: center;
     z-index: 10000;
@@ -167,24 +170,27 @@
     font-weight: bold;
     height: 14px;
     background-color: rgb(224, 224, 224);
-    margin: 0;
+    width: 195px;
+    margin: 0 auto 0 auto;
     padding: 0;
-    width: 100%;
 }
 
 #middleInfo #audioTitle {
     top: 411px;
     font-weight: 400;
+    width: 50px;
 }
 
 #middleInfo #ergonomieTitle {
     top: 442px;
     font-weight: 400;
+    width: 85px;
 }
 
 #middleInfo #noteTitle {
     top: 472px;
     font-weight: 400;
+    width: 40px;
 }
 
 #expertAdvice {
