@@ -71,10 +71,8 @@ var app = {
             $("#" + column).scrollTo($(event.target).parents('.compare-product').prev());
         });
         $(".compare-product .glyphicon-remove-sign").click(function(event) {
-            if ($(".first-column").length > 1) {
-                alert($(this).prev().attr("id"));
-                $("img[id='" + $(this).prev().attr("id") + "'']").parent().remove();
-                // $(this).parent().remove();
+            if ($("#first-column").children().length > 2) {
+                $("img[id='" + $(this).prev().attr("id") + "']").parent().remove();
             }
         });
     },
