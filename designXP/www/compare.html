@@ -17,7 +17,7 @@
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container" style='height:100vh; display: flex; flex-direction: column'>
             <div class="headerApp">
 
                 <p class="titleHeader">
@@ -26,7 +26,7 @@
                 <div id="navbar-actions">
                 </div>
             </div>
-            <div class="row" style="display: flex; flex-direction: row; justify-content: space-around; margin: 8vh 0% 0% 0%;">
+            <div class="row" style="display:flex; flex: 1; justify-content: space-around; margin: 8vh 0% 0% 0%;">
                 <div id="middleInfo">
                     <div id="splitLine"></div>
                     <h3 id="typeTitle">Type</h3>
@@ -38,9 +38,9 @@
                     <h3 id="ergonomieTitle">Ergonomie</h3>
                     <h3 id="noteTitle">Note</h3>
                 </div>
-                <div id='first-column' style="width: 50%; display: flex; flex-direction: column;">
+                <div id='first-column' style="overflow: scroll; flex: 1;">
                 </div>
-                <div id='second-column' style="width: 50%; display: flex; flex-direction: column;">
+                <div id='second-column' style="overflow: scroll; flex: 1;">
                 </div>
             </div>
         </div>
