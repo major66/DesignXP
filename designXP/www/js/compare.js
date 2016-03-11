@@ -70,9 +70,14 @@ var app = {
             var column = $(event.target).parents(".main-column").attr('id');
             $("#" + column).scrollTo($(event.target).parents('.compare-product').prev());
         });
-        $(".compare-product .glyphicon-remove-sign").click(function(event) {
+        $(".compare-product .glyphicon-remove-sign").click(function (event) {
             if ($("#first-column").children().length > 2) {
+                var suppressButon = $(this);
                 $("img[id='" + $(this).prev().attr("id") + "']").parent().remove();
+                comparedItems = $.grep(comparedItems, function (value) {
+                    return value !== $(suppressButon).prev().attr("id").split('-')[1];
+                });
+                localStorage.setObject('comparator', JSON.stringify(comparedItems));
             }
         });
     },
