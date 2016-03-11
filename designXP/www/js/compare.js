@@ -21,6 +21,11 @@ $.ajaxSetup({
     async: false
 });
 
+jQuery.fn.scrollTo = function (elem) {
+    $(this).scrollTop($(this).scrollTop() - $(this).offset().top + $(elem).offset().top);
+    return this;
+};
+
 Storage.prototype.setObject = function (key, value) {
     this.setItem(key, JSON.stringify(value));
 }
@@ -58,12 +63,12 @@ var app = {
 
 
         $(".glyphicon-menu-down").click(function (event) {
-            console.log($(event.target).parents('.compare-product').next().offset().top - 50);
-            $.mobile.silentScroll($(event.target).parents('.compare-product').next().offset().top - 50);
+            var column = $(event.target).parents(".main-column").attr('id');
+            $("#" + column).scrollTo($(event.target).parents('.compare-product').next());
         });
         $(".glyphicon-menu-up").click(function (event) {
-            console.log(event.target);
-            $.mobile.silentScroll($(event.target).parents('.compare-product').prev().offset().top - 50);
+            var column = $(event.target).parents(".main-column").attr('id');
+            $("#" + column).scrollTo($(event.target).parents('.compare-product').prev());
         });
         $(".compare-product .glyphicon-remove-sign").click(function(event) {
             if ($(".first-column").length > 1) {
