@@ -33,6 +33,7 @@ $.event.special.tap.tapholdThreshold = 300;
 $.event.special.tap.emitTapOnTaphold = false;
 var selectedProductsNb = 0;
 var itemsToCompare = [];
+var nbHeadphonesSelected = 0;
 
 var app = {
     initialize: function () {
@@ -85,12 +86,28 @@ function addBorder(event) {
 
 function updateSelectedItemsToCompare(event, action) {
     var item;
+    var nb = document.getElementById("nbHeadphones") ;
+
+    if (action == "add") {
+        nbHeadphonesSelected ++;
+        nb.innerHTML ="";
+        nb.innerHTML = nbHeadphonesSelected;
+    }
+    else{
+        nbHeadphonesSelected --;
+        if(nbHeadphonesSelected == "0"){
+            nb.innerHTML =" ";
+        }
+        else{
+        nb.innerHTML ="";
+        nb.innerHTML = nbHeadphonesSelected;}
+    }
+
     if ($(event.target).hasClass("compare-product")) {
         item = ($(event.target).attr('id').split('-')[1]);
     } else {
         item = ($(event.target).parents('.compare-product').attr('id').split('-')[1]);
     }
-
     if (action === "add") {
         itemsToCompare.push(item);
     } else {

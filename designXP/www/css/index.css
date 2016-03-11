@@ -93,6 +93,138 @@
     overflow: hidden;
 }
 
+.compare-product .glyphicon-menu-up, .compare-product .glyphicon-menu-down {
+    display: block;
+    width: 100%;
+    font-size: 50px;
+    color: #2196F3;
+}
+
+.specs {
+    font-weight: 600;
+}
+
+#middleInfo * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#middleInfo #splitLine {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    z-index: 100;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.64);
+}
+
+#middleInfo #typeTitle, #middleInfo #bruitTitle, #middleInfo #wirelessTitle, #middleInfo #weightTitle {
+    top: 297px;
+    text-align: center;
+    line-height: 9px;
+    z-index: 10000;
+    font-size: 9px;
+    font-weight: 400;
+    height: 9px;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.84);
+    margin: 0 auto 0 auto;
+    padding: 0;
+    width: 100px;
+}
+
+#middleInfo #bruitTitle {
+    top: 316px;
+}
+
+#middleInfo #wirelessTitle {
+    top: 335px;
+}
+
+#middleInfo #weightTitle {
+    top: 354px;
+}
+
+#middleInfo #expertAdvice, #middleInfo #audioTitle, #middleInfo #ergonomieTitle, #middleInfo #noteTitle {
+    top: 385px;
+    text-align: center;
+    z-index: 10000;
+    font-size: 14px;
+    font-weight: bold;
+    height: 14px;
+    background-color: rgb(224, 224, 224);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#middleInfo #audioTitle {
+    top: 411px;
+    font-weight: 400;
+}
+
+#middleInfo #ergonomieTitle {
+    top: 442px;
+    font-weight: 400;
+}
+
+#middleInfo #noteTitle {
+    top: 472px;
+    font-weight: 400;
+}
+
+#expertAdvice {
+    position: absolute;
+    top: 308px;
+    width: 100%;
+    margin: 0;
+    padding: 30px 0 5px 0;
+    margin-top: 15px;
+    background-color: rgb(224, 224, 224);
+    // background-color: rgba(0, 0, 0, 0.12);
+}
+
+#expertAdvice div {
+    position: relative;
+    width: 100%;
+    z-index: 10001;
+}
+
+.leftSide div {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.rightSide div {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.bigStarBlue {
+    color: #2196F3;
+}
+
+.starExpertBlue {
+    height: 25px;
+    width: 25px;
+    font-size: 18px;
+    border-radius: 15px;
+    color: white;
+    background: #2196F3;
+    line-height: 25px;
+    text-align: center;
+    padding-left: 1px;
+    margin-bottom: 5px;
+}
+
+#price {
+    padding-top: 120px;
+}
+
 .nb-review {
     font-size: 0.6em;
 }
@@ -105,11 +237,6 @@
 
 .selectedItem{
     box-shadow:inset 0 0 0 3px #2196F3;
-}
-
-.bigStarBlue{
-    color: #2196F3;
-    font-size: 20px;
 }
 
 .smallStarYellow{
