@@ -193,6 +193,14 @@
     width: 40px;
 }
 
+.compare-product .glyphicon-remove-sign {
+    position: absolute;
+    font-size: 26px;
+    color: #ff4040;
+    right: 15px;
+    top: 90px;
+}
+
 #expertAdvice {
     position: absolute;
     top: 308px;

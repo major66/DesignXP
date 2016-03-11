@@ -78,6 +78,7 @@ function loadProducts(items) {
                 htmlProducts = '<div class="compare-product" style="margin: 0%; border: none; height: 92vh;">'
                         + '<div class="glyphicon glyphicon-menu-up" aria-hidden="true"></div>'
                         + '<img class="imgIem" id="product-' + val.id + '" src="' + val.img + '"/>'
+                        + '<div class="glyphicon glyphicon-remove-sign" aria-hidden="true"></div>'
                         + '<div style="margin-top: 5px; letter-spacing: -1px; font-weight: bold;">' + val.name + '</div>'
                         + '<div style="margin-top: 3px; letter-spacing: -1px;">' + val.desc + '</div>'
                         + '<div>' + generateHtmlRank(val.user_rank, "user") + "</div>"
