@@ -60,7 +60,7 @@ var app = {
             $.mobile.silentScroll($(event.target).parents('.compare-product').next().offset().top - 50);
         });
         $(".glyphicon-menu-up").click(function (event) {
-            $.mobile.silentScroll($(event.target).parents('.compare-product').prev().offset().bottom + 50);
+            $.mobile.silentScroll($(event.target).parents('.compare-product').prev().offset().top - 50);
         });
     },
     openView: function () {
