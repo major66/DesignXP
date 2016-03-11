@@ -65,6 +65,13 @@ var app = {
             console.log(event.target);
             $.mobile.silentScroll($(event.target).parents('.compare-product').prev().offset().top - 50);
         });
+        $(".compare-product .glyphicon-remove-sign").click(function(event) {
+            if ($(".first-column").length > 1) {
+                alert($(this).prev().attr("id"));
+                $("img[id='" + $(this).prev().attr("id") + "'']").parent().remove();
+                // $(this).parent().remove();
+            }
+        });
     },
     openView: function () {
         var productToView = $(event.target).attr("id").split('-')[1];
