@@ -39,6 +39,10 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function () {
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
+        
         var comparedItems = JSON.parse(localStorage.getObject('comparator'));
         loadProducts(comparedItems);
         var products = document.querySelectorAll(".imgIem");
