@@ -48,10 +48,42 @@ function loadProducts(items) {
     $.getJSON("document.json", function (data) {
         $.each(data, function (key, val) {
             if ($.inArray(val.id, items) !== -1) {
-                htmlProducts = val.id;
-//                $("#first-column").append(htmlProducts);
-//                $("#second-column").append(htmlProducts);
+                htmlProducts = '<div class="compare-product" style="margin: 0%; border: none; height: 92vh;">'
+                        + '<div class="glyphicon glyphicon-menu-up" aria-hidden="true"></div>'
+                        + '<img class="imgIem" src="http://img1.lesnumeriques.com/produits/558/15370/beyerdynamic-custom-one-pro_1358764853_450x400.jpg"/>'
+                        + '<div style="margin-top: 5px; letter-spacing: -1px; font-weight: bold;">Plantronics Back Pro</div>'
+                        + '<div style="margin-top: 3px; letter-spacing: -1px;">Micro-casque nomade</div>'
+                        + '<div>' + generateHtmlRank(val.user_rank, "pro") + "</div>"
+                        + '<div class="specs" style="margin-top: 5px;">' + val.type + '</div>'
+                        + '<div class="specs" style="margin-top: 5px;">' + val.hp + '</div>'
+                        + '<div class="specs" style="margin-top: 5px;">' + val.wireless + '</div>'
+                        + '<div class="specs" style="margin-top: 5px;">' + val.weight + '</div>'
+                        + '<div id="expertAdvice" class="leftSide">'
+                        + '<div id="audio">' + generateHtmlRank(val.audio, "user") + "</div>"
+                        + '<div id="ergonomie">' + generateHtmlRank(val.ergo, "user") + "</div>"
+                        + '<div id="note">' + generateHtmlRank(val.pro_rank, "user") + "</div>"
+                        + "</div>"
+                        + '<div id="price" style="margin-top: 2em; font-size: 2em;">' + val.price + "</div>"
+                        + '<div class="glyphicon glyphicon-menu-down" aria-hidden="true"></div></div>';
+                $("#first-column").append(htmlProducts);
+                $("#second-column").append(htmlProducts);
             }
         });
     });
+}
+
+function generateHtmlRank(rank, role) {
+    var i = 0;
+    var html = "";
+    var starType = role === "user" ? "starExpertBlue" : 'smallStarYellow';
+    var starTypeEmpty = role === "user" ? "" : 'greyStar';
+    while (i < rank) {
+        html += '<span class="glyphicon glyphicon-star ' + starType + '" aria-hidden="true"></span>';
+        i++;
+    }
+    while (i < 5) {
+        html += '<span class="glyphicon glyphicon-star-empty ' + starType + ' ' + starTypeEmpty + '" aria-hidden="true"></span>';
+        i++;
+    }
+    return html;
 }
