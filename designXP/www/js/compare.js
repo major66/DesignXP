@@ -41,6 +41,15 @@ var app = {
     onDeviceReady: function () {
         var comparedItems = JSON.parse(localStorage.getObject('comparator'));
         loadProducts(comparedItems);
+        var products = document.querySelectorAll(".imgIem");
+        for (var i = 0; i < products.length; i++) {
+            $(products[i]).bind('tap', app.openView);
+        }
+    },
+    openView: function () {
+        var productToView = $(event.target).attr("id").split('-')[1];
+        localStorage.setObject('product', productToView);
+        window.location = "plug_headphones.html";
     }
 };
 
@@ -50,8 +59,8 @@ function loadProducts(items) {
             if ($.inArray(val.id, items) !== -1) {
                 htmlProducts = '<div class="compare-product" style="margin: 0%; border: none; height: 92vh;">'
                         + '<div class="glyphicon glyphicon-menu-up" aria-hidden="true"></div>'
-                        + '<img class="imgIem" src="http://img1.lesnumeriques.com/produits/558/15370/beyerdynamic-custom-one-pro_1358764853_450x400.jpg"/>'
-                        + '<div style="margin-top: 5px; letter-spacing: -1px; font-weight: bold;">' + val.name +'</div>'
+                        + '<img class="imgIem" id="product-' + val.id + '" src="http://img1.lesnumeriques.com/produits/558/15370/beyerdynamic-custom-one-pro_1358764853_450x400.jpg"/>'
+                        + '<div style="margin-top: 5px; letter-spacing: -1px; font-weight: bold;">' + val.name + '</div>'
                         + '<div style="margin-top: 3px; letter-spacing: -1px;">' + val.desc + '</div>'
                         + '<div>' + generateHtmlRank(val.user_rank, "user") + "</div>"
                         + '<div class="specs" style="margin-top: 5px;">' + val.type + '</div>'
