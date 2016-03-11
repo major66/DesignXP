@@ -103,7 +103,8 @@ function generateHtmlRank(rank, role) {
     var i = 0;
     var html = "";
     var starType = role === "pro" ? "starExpertBlue" : 'smallStarYellow';
-    var starTypeEmpty = role === "pro" ? "glyphicon-star greyStar" : 'glyphicon-star';
+    var starTypeEmpty = role === "pro" ? "glyphicon-star greyStar" : 'glyphicon-star-empty';
+
     while (i < rank) {
         html += '<span class="glyphicon glyphicon-star ' + starType + '" aria-hidden="true"></span>';
         i++;
