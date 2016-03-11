@@ -41,6 +41,11 @@ var app = {
     onDeviceReady: function () {
         var product = JSON.parse(localStorage.getObject('product'));
         loadProduct(product);
+        var previousPage = localStorage.getObject('view');
+        $(".titleHeader").click(function (event) {
+            localStorage.setObject('view', "compare.html");
+            window.location = previousPage;
+        });
     }
 };
 

@@ -45,10 +45,16 @@ var app = {
         for (var i = 0; i < products.length; i++) {
             $(products[i]).bind('tap', app.openView);
         }
+        localStorage.setObject('view', "index.html");
+        var previousPage = localStorage.getObject('view');
+        $(".titleHeader").click(function (event) {
+            window.location = previousPage;
+        });
     },
     openView: function () {
         var productToView = $(event.target).attr("id").split('-')[1];
         localStorage.setObject('product', productToView);
+        localStorage.setObject('view', "compare.html");
         window.location = "plug_headphones.html";
     }
 };

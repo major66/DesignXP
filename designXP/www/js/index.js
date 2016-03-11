@@ -68,11 +68,13 @@ var app = {
                     ? $(event.target).attr("id").split('-')[1]
                     : $(event.target).parents('.compare-product').attr("id").split('-')[1];
             localStorage.setObject('product', productToView);
+            localStorage.setObject('view', "index.html");
             window.location = "plug_headphones.html";
         }
     },
     saveProducts: function (event) {
         localStorage.setObject('comparator', JSON.stringify(itemsToCompare));
+        localStorage.setObject('view', "index.html");
     },
     changeButton: function (event) {
         if (!isSearchBarOpen) {
@@ -111,21 +113,22 @@ function addBorder(event) {
 
 function updateSelectedItemsToCompare(event, action) {
     var item;
-    var nb = document.getElementById("nbHeadphones") ;
+    var nb = document.getElementById("nbHeadphones");
 
     if (action == "add") {
-        nbHeadphonesSelected ++;
-        nb.innerHTML ="";
+        nbHeadphonesSelected++;
+        nb.innerHTML = "";
         nb.innerHTML = nbHeadphonesSelected;
     }
-    else{
-        nbHeadphonesSelected --;
-        if(nbHeadphonesSelected == "0"){
-            nb.innerHTML =" ";
+    else {
+        nbHeadphonesSelected--;
+        if (nbHeadphonesSelected == "0") {
+            nb.innerHTML = " ";
         }
-        else{
-        nb.innerHTML ="";
-        nb.innerHTML = nbHeadphonesSelected;}
+        else {
+            nb.innerHTML = "";
+            nb.innerHTML = nbHeadphonesSelected;
+        }
     }
 
     if ($(event.target).hasClass("compare-product")) {
