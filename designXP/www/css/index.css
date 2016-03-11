@@ -55,6 +55,16 @@
     margin: 60px 2% 2% 2%;
 }
 
+#search-bar {
+    font-size: 1.4em;
+    display: none;
+    width: 45%;
+    height: 37px !important;
+    position: absolute;
+    left: 30%;
+    resize: none;
+}
+
 .headerApp {
     left: 0;
     position: fixed;
@@ -232,6 +242,11 @@
 .imgIem{
     margin-top: 3px;
     width: 80%;
+}
+
+.imgIIem{
+    margin-top: 3px;
+    width: 50%;
 }
 
 
