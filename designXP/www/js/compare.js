@@ -57,10 +57,10 @@ var app = {
         });
 
         $(".glyphicon-menu-down").click(function (event) {
-            $.mobile.silentScroll($(event.target).parents('.compare-product').next(".compare-product").offset().top);
+            $.mobile.silentScroll($(event.target).parents('.compare-product').next().offset().top - 50);
         });
         $(".glyphicon-menu-up").click(function (event) {
-            $.mobile.silentScroll($(event.target).parents('.compare-product').prev(".compare-product").offset().bottom);
+            $.mobile.silentScroll($(event.target).parents('.compare-product').prev().offset().bottom + 50);
         });
     },
     openView: function () {
