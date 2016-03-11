@@ -42,17 +42,25 @@ var app = {
         document.addEventListener('touchmove', function (e) {
             e.preventDefault();
         }, false);
-        
+
         var comparedItems = JSON.parse(localStorage.getObject('comparator'));
         loadProducts(comparedItems);
         var products = document.querySelectorAll(".imgIem");
         for (var i = 0; i < products.length; i++) {
             $(products[i]).bind('tap', app.openView);
         }
+
         localStorage.setObject('view', "index.html");
         var previousPage = localStorage.getObject('view');
         $(".titleHeader").click(function (event) {
             window.location = previousPage;
+        });
+
+        $(".glyphicon-menu-down").click(function (event) {
+            $.mobile.silentScroll($(event.target).parents('.compare-product').next(".compare-product").offset().top);
+        });
+        $(".glyphicon-menu-up").click(function (event) {
+            $.mobile.silentScroll($(event.target).parents('.compare-product').prev(".compare-product").offset().bottom);
         });
     },
     openView: function () {
