@@ -39,9 +39,9 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function () {
-//        document.addEventListener('touchmove', function (e) {
-//            e.preventDefault();
-//        }, false);
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
 
         var comparedItems = JSON.parse(localStorage.getObject('comparator'));
         loadProducts(comparedItems);
@@ -56,10 +56,13 @@ var app = {
             window.location = previousPage;
         });
 
+
         $(".glyphicon-menu-down").click(function (event) {
+            console.log($(event.target).parents('.compare-product').next().offset().top - 50);
             $.mobile.silentScroll($(event.target).parents('.compare-product').next().offset().top - 50);
         });
         $(".glyphicon-menu-up").click(function (event) {
+            console.log(event.target);
             $.mobile.silentScroll($(event.target).parents('.compare-product').prev().offset().top - 50);
         });
     },
